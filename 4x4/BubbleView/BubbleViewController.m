@@ -108,6 +108,10 @@
 - (void)_compressBubbles:(NSArray<IndBubble *> *) allBubbles
             endingBubble:(IndBubble *)endingBubble
 {
+  if (allBubbles.count < 1) {
+    return;
+  }
+
   //calculate final bubble
   int totalValue = [allBubbles[0].bubbleValue integerValue] * allBubbles.count;
   int rounded = pow(2, floor(log(totalValue)/log(2)));
@@ -126,7 +130,7 @@
 
 - (void)_scoreBubbles:(NSArray<IndBubble *> *) allBubbles
 {
-  if (allBubbles.count == 1) {
+  if (allBubbles.count >= 1) {
     return;
   }
 
