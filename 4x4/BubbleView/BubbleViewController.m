@@ -20,6 +20,7 @@
   NSMutableArray<IndBubble *> *_activatedBubbles;
   BubbleView *_bubbleView;
   IndBubble *_lastBubble;
+  IndBubble *_secondToLastBubble;
 }
 
 - (instancetype)init
@@ -55,6 +56,8 @@
   IndBubble *bubble = [_bubbleView bubbleForTouch:touch];
   if ([self _canTouchBubble:bubble fromBubble:_lastBubble]) {
     [self _activateBubble:bubble];
+  } else if ([bubble isEqual:_secondToLastBubble]) {
+    [self _turnOffLastBubble];
   }
 }
 - (void)bubbleViewTouchesEnded:(UITouch *)touch{
@@ -69,10 +72,20 @@
 
 #pragma mark - Private
 
+- (void)_turnOffLastBubble
+{
+  _lastBubble.isPressed = NO;
+  [_activatedBubbles removeObject:_lastBubble];
+
+  _lastBubble = _secondToLastBubble;
+  _secondToLastBubble = _activatedBubbles.count > 1 ? _activatedBubbles[_activatedBubbles.count - 2] : nil;
+}
+
 - (void)_activateBubble:(IndBubble *)bubble
 {
   bubble.isPressed = YES;
   [_activatedBubbles addObject:bubble];
+  _secondToLastBubble = _lastBubble;
   _lastBubble = bubble;
 }
 
