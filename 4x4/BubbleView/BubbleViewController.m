@@ -127,11 +127,15 @@
 
 - (void)_checkForRemainingMoves
 {
+  int sanityCheckColumns = 0;
+  int sanityCheckBubbles = 0;
   for (NSArray<IndBubble *> *bubbles in _bubbleView.bubbles) {
+    sanityCheckColumns++;
     for (IndBubble *bubble in bubbles) {
+      sanityCheckBubbles++;
       NSArray *borderingBubbles = [_bubbleView borderingBubblesOfBubble:bubble];
       for (IndBubble *borderBubble in borderingBubbles) {
-        if ([self _canTouchBubble:borderBubble fromBubble:bubble]) {
+        if (bubble.bubbleValue == borderBubble.bubbleValue) {
           return;
         }
       }
