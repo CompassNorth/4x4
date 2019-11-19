@@ -127,9 +127,17 @@
 
 - (void)_checkForRemainingMoves
 {
-  // TODO : Check bubbles to see if any moves remaing
-  // do something cool here
-  return;
+  for (NSArray<IndBubble *> *bubbles in _bubbleView.bubbles) {
+    for (IndBubble *bubble in bubbles) {
+      NSArray *borderingBubbles = [_bubbleView borderingBubblesOfBubble:bubble];
+      for (IndBubble *borderBubble in borderingBubbles) {
+        if (bubble.bubbleValue == borderBubble.bubbleValue) {
+          return;
+        }
+      }
+    }
+  }
+
   [_delegate noMoreMoves];
 }
 
