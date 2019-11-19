@@ -134,7 +134,9 @@
   for (IndBubble *bubble in allBubbles) {
     score += [bubble.bubbleValue integerValue];
   }
-  // TODO : Add a multiplier
+  if (allBubbles.count > 2) {
+    score += ([allBubbles[0].bubbleValue integerValue] / 2) * (allBubbles.count - 2);
+  }
   [_delegate pointsCollected:score];
 }
 
