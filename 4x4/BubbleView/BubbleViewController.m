@@ -127,7 +127,7 @@
 
 - (void)_checkForRemainingMoves
 {
-  // TODO : Check bubbles to see if any moves remain
+  // TODO : Check bubbles to see if any moves remaing
   return;
   [_delegate noMoreMoves];
 }
