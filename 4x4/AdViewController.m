@@ -10,6 +10,7 @@
 #import "AdViewController.h"
 #import "UILayoutHelpers.h"
 #import "ColorProvider.h"
+#import "UISpringButton.h"
 
 static CGFloat kSideBuffer = 25;
 
@@ -24,16 +25,21 @@ static CGFloat kSideBuffer = 25;
 - (void)viewDidLoad {
   answerCount = 0;
   
+  self.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
+  
   // Add the title
   _titleLabel = [UILabel new];
   _titleLabel.font = [UIFont boldSystemFontOfSize:50];
   _titleLabel.text = @"Quizz";
+  _titleLabel.alpha = 1.0;
+  _titleLabel.textColor = UIColor.blackColor;
   [self.view addSubview:_titleLabel];
   
   // Add the question
   _questionLabel = [UILabel new];
   _questionLabel.font = [UIFont boldSystemFontOfSize:50];
   _questionLabel.text = @"Question";
+  _questionLabel.textColor = UIColor.blackColor;
   [self.view addSubview:_questionLabel];
   
   answerButtons = [NSMutableArray new];
@@ -41,7 +47,7 @@ static CGFloat kSideBuffer = 25;
   for (int i = 0; i < 3; i++) {
     // Add each answer
     // answerButton = [answerButtons objectAtIndex:i];
-    UIButton* answerButton = [UIButton new];
+    UIButton* answerButton = [UISpringButton new];
     [answerButton setTitle:[self.answers objectAtIndex:i] forState:UIControlStateNormal];
     [answerButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [answerButton addTarget:self action:@selector(_didTapAnswer:) forControlEvents:UIControlEventTouchUpInside];
@@ -52,6 +58,7 @@ static CGFloat kSideBuffer = 25;
       correctAnswer = answerButton;
     }
   }
+  
 }
 
 - (void)viewWillLayoutSubviews {
