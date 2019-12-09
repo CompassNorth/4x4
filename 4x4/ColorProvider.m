@@ -68,7 +68,7 @@
 
 +(UIColor *)onekColor
 {
-  return [UIColor greenColor];
+  return [UIColor greenColor]; // TODO
 }
 
 +(UIColor *)twokColor
@@ -78,17 +78,17 @@
 
 +(UIColor *)fourkColor
 {
-  return [UIColor greenColor];
+  return [UIColor greenColor]; // TODO
 }
 
 +(UIColor *)eightkColor
 {
-  return [UIColor greenColor];
+  return [UIColor greenColor]; // TODO
 }
 
 +(UIColor *)sixteenkColor
 {
-  return [UIColor greenColor];
+  return [UIColor greenColor]; // TODO
 }
 
 +(UIColor *)colorForValue:(int)value

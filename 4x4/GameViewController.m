@@ -40,6 +40,7 @@ static const NSString *kHighScoreKey = @"highScore";
 
   _newGameButton = [UIButton new];
   [_newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
+  [_newGameButton setTitleColor:ColorProvider.fontColor forState:UIControlStateNormal];
   [_newGameButton addTarget:self action:@selector(_didTapNewGame) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:_newGameButton];
 
@@ -73,7 +74,7 @@ static const NSString *kHighScoreKey = @"highScore";
 
   _newGameButton.frame = CGRectMake(50, 100, 0, 0);
   [_newGameButton sizeToFit];
-  _newGameButton.backgroundColor = [UIColor blueColor];
+  _newGameButton.backgroundColor = [UIColor blueColor]; // TODO : Make this much prettier
 
   _scoreLabel.frame = CGRectMake(0, 200, 0, 0);
   [_scoreLabel sizeToFit];
