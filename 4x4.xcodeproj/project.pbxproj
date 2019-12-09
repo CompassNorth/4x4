@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		107C6005239E675B0030E199 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107C6004239E675B0030E199 /* AdViewController.m */; };
+		107C6009239E83E80030E199 /* AdVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107C6008239E83E80030E199 /* AdVideoViewController.m */; };
+		107C600B239E87800030E199 /* 20191209_134415.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 107C600A239E87800030E199 /* 20191209_134415.mp4 */; };
 		5837751C237C8330002ED977 /* ColorProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5837751B237C8330002ED977 /* ColorProvider.m */; };
 		5887BD4823763DCF0063E472 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD4723763DCF0063E472 /* AppDelegate.m */; };
 		5887BD4B23763DCF0063E472 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD4A23763DCF0063E472 /* SceneDelegate.m */; };
@@ -21,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		107C6004239E675B0030E199 /* AdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
+		107C6006239E67800030E199 /* AdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
+		107C6007239E83E80030E199 /* AdVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdVideoViewController.h; sourceTree = "<group>"; };
+		107C6008239E83E80030E199 /* AdVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdVideoViewController.m; sourceTree = "<group>"; };
+		107C600A239E87800030E199 /* 20191209_134415.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 20191209_134415.mp4; sourceTree = "<group>"; };
 		5837751A237C831F002ED977 /* ColorProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorProvider.h; sourceTree = "<group>"; };
 		5837751B237C8330002ED977 /* ColorProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorProvider.m; sourceTree = "<group>"; };
 		5887BD4323763DCF0063E472 /* 4x4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4x4.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +66,7 @@
 		5887BD3A23763DCF0063E472 = {
 			isa = PBXGroup;
 			children = (
+				107C600A239E87800030E199 /* 20191209_134415.mp4 */,
 				5887BD4523763DCF0063E472 /* 4x4 */,
 				5887BD4423763DCF0063E472 /* Products */,
 			);
@@ -90,6 +99,10 @@
 				5887BD5223763DD00063E472 /* Assets.xcassets */,
 				5887BD5723763DD00063E472 /* Info.plist */,
 				5887BD5823763DD00063E472 /* main.m */,
+				107C6004239E675B0030E199 /* AdViewController.m */,
+				107C6006239E67800030E199 /* AdViewController.h */,
+				107C6007239E83E80030E199 /* AdVideoViewController.h */,
+				107C6008239E83E80030E199 /* AdVideoViewController.m */,
 			);
 			path = 4x4;
 			sourceTree = "<group>";
@@ -173,6 +186,7 @@
 			files = (
 				5887BD5323763DD00063E472 /* Assets.xcassets in Resources */,
 				5887BD5123763DCF0063E472 /* Main.storyboard in Resources */,
+				107C600B239E87800030E199 /* 20191209_134415.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,12 +200,14 @@
 				5887BD4E23763DCF0063E472 /* ViewController.m in Sources */,
 				589B47702380B22400609D44 /* UILayoutHelpers.m in Sources */,
 				5837751C237C8330002ED977 /* ColorProvider.m in Sources */,
+				107C6005239E675B0030E199 /* AdViewController.m in Sources */,
 				5887BD4823763DCF0063E472 /* AppDelegate.m in Sources */,
 				5887BD6123763E0F0063E472 /* BubbleView.m in Sources */,
 				58BF6A1C237CDF8D00D1836E /* BubbleViewController.m in Sources */,
 				5887BD6423763FDE0063E472 /* IndBubble.m in Sources */,
 				5887BD5923763DD00063E472 /* main.m in Sources */,
 				5887BD4B23763DCF0063E472 /* SceneDelegate.m in Sources */,
+				107C6009239E83E80030E199 /* AdVideoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -109,7 +109,8 @@ static const NSString *kHighScoreKey = @"highScore";
 
 - (void)_didTapNewGame
 {
-  _noMoreMovesLabel.hidden = YES;
+  
+  /*_noMoreMovesLabel.hidden = YES;
 
   [self _updateScore:0];
 
@@ -117,7 +118,7 @@ static const NSString *kHighScoreKey = @"highScore";
   _bubbleViewController = [BubbleViewController new];
   _bubbleViewController.delegate = self;
   [self.view addSubview:_bubbleViewController.view];
-  [self.view setNeedsLayout];
+  [self.view setNeedsLayout];*/
 }
 
 - (void)_updateScore:(int)score

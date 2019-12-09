@@ -1,0 +1,107 @@
+//
+//  AdViewController.m
+//  4x4
+//
+//  Created by François Helg on 09.12.19.
+//  Copyright © 2019 Nicole Maguire. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "AdViewController.h"
+#import "UILayoutHelpers.h"
+#import "ColorProvider.h"
+
+static CGFloat kSideBuffer = 25;
+
+@implementation AdViewController {
+  UILabel *_titleLabel;
+  UILabel *_questionLabel;
+  NSMutableArray *answerButtons;
+  UIButton *correctAnswer;
+  int answerCount;
+}
+
+- (void)viewDidLoad {
+  answerCount = 0;
+  
+  // Add the title
+  _titleLabel = [UILabel new];
+  _titleLabel.font = [UIFont boldSystemFontOfSize:50];
+  _titleLabel.text = @"Quizz";
+  [self.view addSubview:_titleLabel];
+  
+  // Add the question
+  _questionLabel = [UILabel new];
+  _questionLabel.font = [UIFont boldSystemFontOfSize:50];
+  _questionLabel.text = @"Question";
+  [self.view addSubview:_questionLabel];
+  
+  answerButtons = [NSMutableArray new];
+  
+  for (int i = 0; i < 3; i++) {
+    NSLog(@"Adding button");
+    // Add each answer
+    // answerButton = [answerButtons objectAtIndex:i];
+    UIButton* answerButton = [UIButton new];
+    // [answerButton setTitle:[self.answers objectAtIndex:i] forState:UIControlStateNormal];
+    [answerButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    [answerButton setTitle:@"Answer" forState:UIControlStateNormal];
+    [answerButton addTarget:self action:@selector(_didTapAnswer:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:answerButton];
+    [answerButtons addObject:answerButton];
+    
+    if (self.correctAnswerIndex == i) {
+      correctAnswer = answerButton;
+    }
+  }
+}
+
+- (void)viewWillLayoutSubviews {
+  [super viewWillLayoutSubviews];
+  
+  const CGFloat width = [UIScreen mainScreen].bounds.size.width;
+  const CGFloat height = [UIScreen mainScreen].bounds.size.height;
+  const CGFloat bubbles_width = width - kSideBuffer * 2;
+  
+  _titleLabel.frame = CGRectMake(0, 200, 0, 0);
+  [_titleLabel sizeToFit];
+  [UILayoutHelpers horizontallyCenterView:_titleLabel withinView:self.view];
+  
+  _questionLabel.frame = CGRectMake(0, CGRectGetMaxY(_titleLabel.frame) + 20, 0, 0);
+  [_questionLabel sizeToFit];
+  [UILayoutHelpers horizontallyCenterView:_questionLabel withinView:self.view];
+  
+  for (int i = 0; i < answerButtons.count; i++) {
+    NSLog(@"Displaying button");
+    UIButton* answerButton = [answerButtons objectAtIndex:i];
+    NSLog(@"Label %@", answerButton.currentTitle);
+    if (i > 0) {
+      UIButton* previousAnswerButton = [answerButtons objectAtIndex:(i-1)];
+      answerButton.frame = CGRectMake(0, CGRectGetMaxY(previousAnswerButton.frame) + 20, 0, 0);
+    } else {
+      answerButton.frame = CGRectMake(0, CGRectGetMaxY(_questionLabel.frame) + 20, 0, 0);
+    }
+    
+    [answerButton sizeToFit];
+    [UILayoutHelpers horizontallyCenterView:answerButton withinView:self.view];
+  }
+}
+  
+#pragma mark - Private
+
+- (void)_didTapAnswer:(UIButton *)button
+{
+  if (correctAnswer == button) {
+    [button setBackgroundColor:UIColor.greenColor];
+    // Add coins and show coin image
+  } else {
+    [button setBackgroundColor:UIColor.redColor];
+    button.enabled = NO;
+    answerCount += 1;
+  }
+  
+  [self.view setNeedsLayout];
+}
+
+
+@end
