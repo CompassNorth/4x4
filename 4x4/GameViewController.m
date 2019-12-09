@@ -15,6 +15,7 @@
 static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
 static CGFloat kContentUnderBuffer = 10;
+static CGFloat kNumberOfMovesBeforeInterstitial = 5;
 static const NSString *kHighScoreKey = @"highScore";
 
 @interface GameViewController () <
@@ -31,6 +32,7 @@ static const NSString *kHighScoreKey = @"highScore";
   UILabel *_noMoreMovesLabel;
   double _score;
   double _highScore;
+  double _moveCount;
 }
 
 - (void)viewDidLoad {
@@ -63,6 +65,7 @@ static const NSString *kHighScoreKey = @"highScore";
 
   [self _updateScore:0];
   [self _updateHighScore:[[[NSUserDefaults standardUserDefaults] valueForKey:kHighScoreKey] doubleValue]];
+  _moveCount = 0;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -129,6 +132,7 @@ static const NSString *kHighScoreKey = @"highScore";
 
 - (void)_updateScore:(int)score
 {
+  [self _increaseMoveCount];
   _score = score;
   _scoreLabel.text = [NSString stringWithFormat:@"%.0f", _score];
   if (_score > _highScore) {
@@ -143,6 +147,20 @@ static const NSString *kHighScoreKey = @"highScore";
   _highScoreLabel.text = [NSString stringWithFormat:@"High Score : %.0f", _highScore];
   [[NSUserDefaults standardUserDefaults] setValue:@(_highScore) forKey:kHighScoreKey];
   [self.view setNeedsLayout];
+}
+
+- (void)_increaseMoveCount
+{
+  _moveCount++;
+  if (_moveCount >= kNumberOfMovesBeforeInterstitial) {
+    [self _showInterstitial];
+    _moveCount = 0;
+  }
+}
+
+- (void)_showInterstitial
+{
+  // TODO : Transition into the child safety skill interstitial
 }
 
 
