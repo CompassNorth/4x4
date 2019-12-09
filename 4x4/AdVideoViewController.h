@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AdVideoViewController : UIViewController
 @property (strong, nonatomic) AVPlayerViewController *playerViewController;
+@property (strong, nonatomic) NSURL *videoUrl;
 @end
 
 NS_ASSUME_NONNULL_END

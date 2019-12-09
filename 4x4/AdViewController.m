@@ -43,9 +43,8 @@ static CGFloat kSideBuffer = 25;
     // Add each answer
     // answerButton = [answerButtons objectAtIndex:i];
     UIButton* answerButton = [UIButton new];
-    // [answerButton setTitle:[self.answers objectAtIndex:i] forState:UIControlStateNormal];
+    [answerButton setTitle:[self.answers objectAtIndex:i] forState:UIControlStateNormal];
     [answerButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    [answerButton setTitle:@"Answer" forState:UIControlStateNormal];
     [answerButton addTarget:self action:@selector(_didTapAnswer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:answerButton];
     [answerButtons addObject:answerButton];
@@ -59,9 +58,9 @@ static CGFloat kSideBuffer = 25;
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   
-  const CGFloat width = [UIScreen mainScreen].bounds.size.width;
-  const CGFloat height = [UIScreen mainScreen].bounds.size.height;
-  const CGFloat bubbles_width = width - kSideBuffer * 2;
+  // const CGFloat width = [UIScreen mainScreen].bounds.size.width;
+  // const CGFloat height = [UIScreen mainScreen].bounds.size.height;
+  // const CGFloat bubbles_width = width - kSideBuffer * 2;
   
   _titleLabel.frame = CGRectMake(0, 200, 0, 0);
   [_titleLabel sizeToFit];
