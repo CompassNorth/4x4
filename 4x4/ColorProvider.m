@@ -68,7 +68,7 @@
 
 +(UIColor *)onekColor
 {
-  return [UIColor greenColor];
+  return [UIColor colorWithRed:234/255.0 green:210/255.0 blue:244/255.0 alpha:1.0];
 }
 
 +(UIColor *)twokColor
@@ -78,17 +78,17 @@
 
 +(UIColor *)fourkColor
 {
-  return [UIColor greenColor];
+  return [UIColor colorWithRed:244/255.0 green:182/255.0 blue:187/255.0 alpha:1.0];
 }
 
 +(UIColor *)eightkColor
 {
-  return [UIColor greenColor];
+  return [UIColor colorWithRed:219/255.0 green:227/255.0 blue:235/255.0 alpha:1.0];
 }
 
 +(UIColor *)sixteenkColor
 {
-  return [UIColor greenColor];
+  return [UIColor colorWithRed:244/255.0 green:176/255.0 blue:115/255.0 alpha:1.0];
 }
 
 +(UIColor *)colorForValue:(int)value

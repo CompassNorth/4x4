@@ -10,6 +10,7 @@
 
 #import "IndBubble.h"
 #import "ColorProvider.h"
+#import "EmojiProvider.h"
 
 @implementation IndBubble {
   UILabel *_label;
@@ -49,11 +50,14 @@
   _isPressed = isPressed;
   if (isPressed) {
     self.backgroundColor = [UIColor grayColor];
+    _label.text = [EmojiProvider emojiForValue:[_bubbleValue integerValue]];
   } else {
     self.backgroundColor = [ColorProvider colorForValue:[_bubbleValue integerValue]];
+    _label.text = _bubbleValue.stringValue;
   }
 
   [self _playHaptic:!isPressed];
+  [self setNeedsLayout];
 }
 
 - (void)randomize

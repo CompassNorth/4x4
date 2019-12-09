@@ -20,6 +20,8 @@
 		5887BD6423763FDE0063E472 /* IndBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD6323763FDE0063E472 /* IndBubble.m */; };
 		589B47702380B22400609D44 /* UILayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B476F2380B22400609D44 /* UILayoutHelpers.m */; };
 		58BF6A1C237CDF8D00D1836E /* BubbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BF6A1B237CDF8D00D1836E /* BubbleViewController.m */; };
+		58F7E8E1239E69480067C4E3 /* UISpringButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E0239E69480067C4E3 /* UISpringButton.m */; };
+		58F7E8E5239E83CD0067C4E3 /* EmojiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E4239E83CD0067C4E3 /* EmojiProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,10 @@
 		589B476F2380B22400609D44 /* UILayoutHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UILayoutHelpers.m; sourceTree = "<group>"; };
 		58BF6A1A237CDF7E00D1836E /* BubbleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BubbleViewController.h; sourceTree = "<group>"; };
 		58BF6A1B237CDF8D00D1836E /* BubbleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BubbleViewController.m; sourceTree = "<group>"; };
+		58F7E8DF239E693B0067C4E3 /* UISpringButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UISpringButton.h; sourceTree = "<group>"; };
+		58F7E8E0239E69480067C4E3 /* UISpringButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UISpringButton.m; sourceTree = "<group>"; };
+		58F7E8E3239E83BE0067C4E3 /* EmojiProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiProvider.h; sourceTree = "<group>"; };
+		58F7E8E4239E83CD0067C4E3 /* EmojiProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +92,8 @@
 				5887BD4A23763DCF0063E472 /* SceneDelegate.m */,
 				5887BD4C23763DCF0063E472 /* GameViewController.h */,
 				5887BD4D23763DCF0063E472 /* GameViewController.m */,
-				589B476E2380B21700609D44 /* UILayoutHelpers.h */,
-				589B476F2380B22400609D44 /* UILayoutHelpers.m */,
+				58F7E8DE239E64B00067C4E3 /* UIHelpers */,
 				58BF6A19237CDF6A00D1836E /* BubbleView */,
-				58BF6A18237CDF5800D1836E /* IndBubble */,
 				5837751A237C831F002ED977 /* ColorProvider.h */,
 				5837751B237C8330002ED977 /* ColorProvider.m */,
 				5887BD4F23763DCF0063E472 /* Main.storyboard */,
@@ -109,6 +113,8 @@
 			children = (
 				5887BD6223763FD00063E472 /* IndBubble.h */,
 				5887BD6323763FDE0063E472 /* IndBubble.m */,
+				58F7E8E3239E83BE0067C4E3 /* EmojiProvider.h */,
+				58F7E8E4239E83CD0067C4E3 /* EmojiProvider.m */,
 			);
 			path = IndBubble;
 			sourceTree = "<group>";
@@ -116,12 +122,24 @@
 		58BF6A19237CDF6A00D1836E /* BubbleView */ = {
 			isa = PBXGroup;
 			children = (
+				58BF6A18237CDF5800D1836E /* IndBubble */,
 				5887BD5F23763E000063E472 /* BubbleView.h */,
 				5887BD6023763E0F0063E472 /* BubbleView.m */,
 				58BF6A1A237CDF7E00D1836E /* BubbleViewController.h */,
 				58BF6A1B237CDF8D00D1836E /* BubbleViewController.m */,
 			);
 			path = BubbleView;
+			sourceTree = "<group>";
+		};
+		58F7E8DE239E64B00067C4E3 /* UIHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				589B476F2380B22400609D44 /* UILayoutHelpers.m */,
+				589B476E2380B21700609D44 /* UILayoutHelpers.h */,
+				58F7E8DF239E693B0067C4E3 /* UISpringButton.h */,
+				58F7E8E0239E69480067C4E3 /* UISpringButton.m */,
+			);
+			path = UIHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,8 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F7E8E1239E69480067C4E3 /* UISpringButton.m in Sources */,
 				5887BD4E23763DCF0063E472 /* GameViewController.m in Sources */,
 				589B47702380B22400609D44 /* UILayoutHelpers.m in Sources */,
+				58F7E8E5239E83CD0067C4E3 /* EmojiProvider.m in Sources */,
 				5837751C237C8330002ED977 /* ColorProvider.m in Sources */,
 				107C6005239E675B0030E199 /* AdViewController.m in Sources */,
 				5887BD4823763DCF0063E472 /* AppDelegate.m in Sources */,
