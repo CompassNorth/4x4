@@ -24,17 +24,22 @@
 
 - (void)showInterstitialFromViewController:(UIViewController *)controller
 {
-  UIViewController *nextVC = [AdViewController new]; // TODO: Randomize which one is shown, make sure the same one isn't shown multiple times
+  UIViewController *nextVC = [self _createTipVCForIndex:_currentTipCount];
   [controller showViewController:nextVC sender:controller];
   _currentTipCount++;
 }
 
-- (UIViewController *)createVideoTipVC
+- (UIViewController *)_createTipVCForIndex:(int)index
+{
+  return [self _createVideoTipVC];
+}
+
+- (UIViewController *)_createVideoTipVC
 {
   return [AdVideoViewController new];
 }
 
-- (UIViewController *)createQuestionTipVC
+- (UIViewController *)_createQuestionTipVC
 {
   return [AdViewController new];
 }
