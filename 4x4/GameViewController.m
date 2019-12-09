@@ -16,7 +16,7 @@
 static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
 static CGFloat kContentUnderBuffer = 10;
-static CGFloat kNumberOfMovesBeforeInterstitial = 1;
+static CGFloat kNumberOfMovesBeforeInterstitial = 3;
 static CGFloat kActionButtonSize = 60;
 static CGFloat kActionButtonImageSize = 45;
 static CGFloat kActionButtonBuffer = 25;
