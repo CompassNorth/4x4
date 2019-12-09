@@ -11,11 +11,13 @@
 #import "UILayoutHelpers.h"
 #import "ColorProvider.h"
 #import "UISpringButton.h"
+#import "AdViewController.h"
+#import "AdVideoViewController.h"
 
 static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
 static CGFloat kContentUnderBuffer = 10;
-static CGFloat kNumberOfMovesBeforeInterstitial = 5;
+static CGFloat kNumberOfMovesBeforeInterstitial = 1;
 static CGFloat kActionButtonSize = 60;
 static CGFloat kActionButtonImageSize = 45;
 static CGFloat kActionButtonBuffer = 25;
@@ -206,7 +208,8 @@ static const NSString *kHighScoreKey = @"highScore";
 
 - (void)_showInterstitial
 {
-  // TODO : Transition into the child safety skill interstitial
+  UIViewController *nextViewController = [AdVideoViewController new];
+  [self showViewController:nextViewController sender:self];
 }
 
 - (void)_updateCoinCount:(double)coinsToAdd
