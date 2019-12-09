@@ -38,14 +38,11 @@ static CGFloat kSideBuffer = 25;
   
   answerButtons = [NSMutableArray new];
   
-  NSArray *localAnswers = @[@"Answer1", @"Answer2", @"Answer3"];
-  
   for (int i = 0; i < 3; i++) {
-    NSLog(@"Adding button");
     // Add each answer
     // answerButton = [answerButtons objectAtIndex:i];
     UIButton* answerButton = [UIButton new];
-    [answerButton setTitle:[localAnswers objectAtIndex:i] forState:UIControlStateNormal];
+    [answerButton setTitle:[self.answers objectAtIndex:i] forState:UIControlStateNormal];
     [answerButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [answerButton addTarget:self action:@selector(_didTapAnswer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:answerButton];
@@ -73,9 +70,7 @@ static CGFloat kSideBuffer = 25;
   [UILayoutHelpers horizontallyCenterView:_questionLabel withinView:self.view];
   
   for (int i = 0; i < answerButtons.count; i++) {
-    NSLog(@"Displaying button");
     UIButton* answerButton = [answerButtons objectAtIndex:i];
-    NSLog(@"Label %@", answerButton.currentTitle);
     if (i > 0) {
       UIButton* previousAnswerButton = [answerButtons objectAtIndex:(i-1)];
       answerButton.frame = CGRectMake(0, CGRectGetMaxY(previousAnswerButton.frame) + 20, 0, 0);
