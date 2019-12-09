@@ -211,6 +211,12 @@ static const NSString *kHighScoreKey = @"highScore";
 - (void)_updateCoinCount:(double)coinsToAdd
 {
   _coinCount += coinsToAdd;
+  if (_coinCount > 0) {
+    // TODO : Update the score bubble to reflect the number of coins
+    // TODO : unlock hammer if the coin count is high enough (med coin)
+    // TODO : unlock reshuffle if the coin is high enough (high coin)
+    // TODO : unlock undo if the coin is high enough (low coin)
+  }
 }
 
 
