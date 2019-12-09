@@ -31,6 +31,13 @@
   playerViewController.player.volume = 0;
   playerViewController.view.frame = self.view.bounds;
   [self.view addSubview:playerViewController.view];
+  self.modalInPresentation = YES;
+
+  double delayInSeconds = 5.0;
+  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    self.modalInPresentation = NO;
+  });
   [playVideo play];
 }
 
