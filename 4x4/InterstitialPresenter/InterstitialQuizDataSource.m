@@ -16,7 +16,10 @@
   NSArray<NSString *> *answers = @[@"A funny joke", @"Where you are", @"Your phone number"];
   InterstitialQuestion *tellStranger = [[InterstitialQuestion alloc] initWithQuestion:@"Which of these is okay to tell someone you met online" answers:answers correctAnswerIndex:0];
 
-  return @[tellStranger];
+  answers = @[@"Tell a friend", @"Tell an adult", @"Nothing"];
+  InterstitialQuestion *uncomfy = [[InterstitialQuestion alloc] initWithQuestion:@"What should you do if someone on the internet makes you feel sad, scared, or confused?" answers:answers correctAnswerIndex:1];
+
+  return @[tellStranger, uncomfy];
 }
 
 @end

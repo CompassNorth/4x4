@@ -107,7 +107,7 @@
 				5887BD5223763DD00063E472 /* Assets.xcassets */,
 				5887BD5723763DD00063E472 /* Info.plist */,
 				5887BD5823763DD00063E472 /* main.m */,
-				58F7E8EF239F0A2F0067C4E3 /* QuestionInterstitial */,
+				58F7E8EF239F0A2F0067C4E3 /* InterstitialDataModels */,
 				58F7E8E6239E9CFD0067C4E3 /* InterstitialPresenter */,
 				107C6006239E67800030E199 /* AdViewController.h */,
 				107C6004239E675B0030E199 /* AdViewController.m */,
@@ -164,13 +164,13 @@
 			path = InterstitialPresenter;
 			sourceTree = "<group>";
 		};
-		58F7E8EF239F0A2F0067C4E3 /* QuestionInterstitial */ = {
+		58F7E8EF239F0A2F0067C4E3 /* InterstitialDataModels */ = {
 			isa = PBXGroup;
 			children = (
 				58F7E8F0239F0A5A0067C4E3 /* InterstitialQuestion.h */,
 				58F7E8F1239F0A680067C4E3 /* InterstitialQuestion.m */,
 			);
-			path = QuestionInterstitial;
+			path = InterstitialDataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
