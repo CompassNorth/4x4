@@ -11,8 +11,7 @@
 #import "UILayoutHelpers.h"
 #import "ColorProvider.h"
 #import "UISpringButton.h"
-#import "AdViewController.h"
-#import "AdVideoViewController.h"
+#import "InterstitialPresenter.h"
 
 static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
@@ -30,6 +29,7 @@ static const NSString *kHighScoreKey = @"highScore";
 @end
 
 @implementation GameViewController{
+  InterstitialPresenter *_interstitialPresenter;
   BubbleViewController *_bubbleViewController;
   UISpringButton *_newGameButton;
   UISpringButton *_undoButton;
@@ -84,6 +84,8 @@ static const NSString *kHighScoreKey = @"highScore";
   [self _updateHighScore:[[[NSUserDefaults standardUserDefaults] valueForKey:kHighScoreKey] doubleValue]];
   _moveCount = 0;
   _coinCount = 0;
+
+  _interstitialPresenter = [InterstitialPresenter new];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -208,8 +210,7 @@ static const NSString *kHighScoreKey = @"highScore";
 
 - (void)_showInterstitial
 {
-  UIViewController *nextViewController = [AdVideoViewController new];
-  [self showViewController:nextViewController sender:self];
+  [_interstitialPresenter showInterstitialFromViewController:self];
 }
 
 - (void)_updateCoinCount:(double)coinsToAdd

@@ -22,6 +22,7 @@
 		58BF6A1C237CDF8D00D1836E /* BubbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BF6A1B237CDF8D00D1836E /* BubbleViewController.m */; };
 		58F7E8E1239E69480067C4E3 /* UISpringButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E0239E69480067C4E3 /* UISpringButton.m */; };
 		58F7E8E5239E83CD0067C4E3 /* EmojiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E4239E83CD0067C4E3 /* EmojiProvider.m */; };
+		58F7E8E9239E9D400067C4E3 /* InterstitialPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E8239E9D400067C4E3 /* InterstitialPresenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		58F7E8E0239E69480067C4E3 /* UISpringButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UISpringButton.m; sourceTree = "<group>"; };
 		58F7E8E3239E83BE0067C4E3 /* EmojiProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiProvider.h; sourceTree = "<group>"; };
 		58F7E8E4239E83CD0067C4E3 /* EmojiProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiProvider.m; sourceTree = "<group>"; };
+		58F7E8E7239E9D340067C4E3 /* InterstitialPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialPresenter.h; sourceTree = "<group>"; };
+		58F7E8E8239E9D400067C4E3 /* InterstitialPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialPresenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +103,9 @@
 				5887BD5223763DD00063E472 /* Assets.xcassets */,
 				5887BD5723763DD00063E472 /* Info.plist */,
 				5887BD5823763DD00063E472 /* main.m */,
-				107C6004239E675B0030E199 /* AdViewController.m */,
+				58F7E8E6239E9CFD0067C4E3 /* InterstitialPresenter */,
 				107C6006239E67800030E199 /* AdViewController.h */,
+				107C6004239E675B0030E199 /* AdViewController.m */,
 				107C6007239E83E80030E199 /* AdVideoViewController.h */,
 				107C6008239E83E80030E199 /* AdVideoViewController.m */,
 			);
@@ -140,6 +144,15 @@
 				58F7E8E0239E69480067C4E3 /* UISpringButton.m */,
 			);
 			path = UIHelpers;
+			sourceTree = "<group>";
+		};
+		58F7E8E6239E9CFD0067C4E3 /* InterstitialPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				58F7E8E7239E9D340067C4E3 /* InterstitialPresenter.h */,
+				58F7E8E8239E9D400067C4E3 /* InterstitialPresenter.m */,
+			);
+			path = InterstitialPresenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +228,7 @@
 				5887BD4E23763DCF0063E472 /* GameViewController.m in Sources */,
 				589B47702380B22400609D44 /* UILayoutHelpers.m in Sources */,
 				58F7E8E5239E83CD0067C4E3 /* EmojiProvider.m in Sources */,
+				58F7E8E9239E9D400067C4E3 /* InterstitialPresenter.m in Sources */,
 				5837751C237C8330002ED977 /* ColorProvider.m in Sources */,
 				107C6005239E675B0030E199 /* AdViewController.m in Sources */,
 				5887BD4823763DCF0063E472 /* AppDelegate.m in Sources */,
