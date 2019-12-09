@@ -16,6 +16,9 @@ static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
 static CGFloat kContentUnderBuffer = 10;
 static CGFloat kNumberOfMovesBeforeInterstitial = 5;
+static CGFloat kActionButtonSize = 60;
+static CGFloat kActionButtonImageSize = 45;
+static CGFloat kActionButtonBuffer = 25;
 static const NSString *kHighScoreKey = @"highScore";
 
 @interface GameViewController () <
@@ -27,6 +30,10 @@ static const NSString *kHighScoreKey = @"highScore";
 @implementation GameViewController{
   BubbleViewController *_bubbleViewController;
   UISpringButton *_newGameButton;
+  UISpringButton *_undoButton;
+  UISpringButton *_shuffleButton;
+  UISpringButton *_hammerButton;
+  UIView *_actionButtonView;
   UILabel *_scoreLabel;
   UILabel *_highScoreLabel;
   UILabel *_noMoreMovesLabel;
@@ -49,6 +56,13 @@ static const NSString *kHighScoreKey = @"highScore";
   _newGameButton.backgroundColor = ColorProvider.oneTwoEightColor;
   _newGameButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
   [self.view addSubview:_newGameButton];
+
+  _actionButtonView = [UIView new];
+  [self.view addSubview:_actionButtonView];
+
+  _shuffleButton = [self _createActionButtonWithImageName:@"shuffleIcon" backgroundColor:ColorProvider.twokColor];
+  _undoButton = [self _createActionButtonWithImageName:@"undoIcon" backgroundColor:ColorProvider.fourNineSixColor];
+  _hammerButton = [self _createActionButtonWithImageName:@"hammerIcon" backgroundColor:ColorProvider.onekColor];
 
   _scoreLabel = [UILabel new];
   _scoreLabel.font = [UIFont boldSystemFontOfSize:50];
@@ -79,7 +93,14 @@ static const NSString *kHighScoreKey = @"highScore";
                                  bubbles_width,
                                  bubbles_width);
 
-  _scoreLabel.frame = CGRectMake(0, 200, 0, 0);
+  [self _layoutActionButtons];
+  _actionButtonView.frame = CGRectMake(0,
+                                       150,
+                                       (kActionButtonSize * 3) + (kActionButtonBuffer * 2),
+                                       kActionButtonSize);
+  [UILayoutHelpers horizontallyCenterView:_actionButtonView withinView:self.view];
+
+  _scoreLabel.frame = CGRectMake(0, CGRectGetMaxY(_actionButtonView.frame) + kContentUnderBuffer * 2, 0, 0);
   [_scoreLabel sizeToFit];
   [UILayoutHelpers horizontallyCenterView:_scoreLabel withinView:self.view];
 
@@ -116,6 +137,28 @@ static const NSString *kHighScoreKey = @"highScore";
 
 
 #pragma mark - Private
+
+- (UISpringButton *)_createActionButtonWithImageName:(NSString *)imageName
+                                     backgroundColor:(UIColor *)backgroundColor
+{
+  UISpringButton *button = [UISpringButton new];
+  UIImage *hammerImage = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+  button.imageView.contentMode = UIViewContentModeScaleAspectFit;
+  button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+  [button.imageView setTintColor:ColorProvider.fontColor];
+  [button setImage:hammerImage forState:UIControlStateNormal];
+  [button setTitleColor:ColorProvider.fontColor forState:UIControlStateNormal];
+  button.backgroundColor = backgroundColor;
+  [_actionButtonView addSubview:button];
+  return button;
+}
+
+- (void)_layoutActionButtons
+{
+  _hammerButton.frame = CGRectMake(0, 0, kActionButtonSize, kActionButtonSize);
+  _shuffleButton.frame = CGRectMake(kActionButtonBuffer + kActionButtonSize, 0, kActionButtonSize, kActionButtonSize);
+  _undoButton.frame = CGRectMake((kActionButtonBuffer + kActionButtonSize) * 2, 0, kActionButtonSize, kActionButtonSize);
+}
 
 - (void)_didTapNewGame
 {

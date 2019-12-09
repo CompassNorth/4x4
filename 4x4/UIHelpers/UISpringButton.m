@@ -14,23 +14,30 @@
 
 - (instancetype)init {
   if (self = [super init]) {
-    // TODO : Make this actually spring
-    //[self addTarget:self action:@selector(animateButton) forControlEvents:UIControlEventTouchUpInside];
+    [self addTarget:self action:@selector(animateButton) forControlEvents:UIControlEventTouchUpInside];
   }
   return self;
 }
 
+- (void)layoutSubviews
+{
+  [super layoutSubviews];
+  self.layer.cornerRadius = self.frame.size.height / 2;
+}
+
 - (void)animateButton {
-  [UIView animateWithDuration:1
+  // TODO : Get this working
+  return;
+  [UIView animateWithDuration:0.5
                    delay:0
-  usingSpringWithDamping:0.55
+  usingSpringWithDamping:0.2
    initialSpringVelocity:12
                  options:UIViewAnimationOptionBeginFromCurrentState
               animations:^{
-                self.transform = CGAffineTransformMakeScale(0.9, 1);
+                self.transform = CGAffineTransformMakeScale(0.9, 0.9);
               }
               completion:^(BOOL finished) {
-                self.transform = CGAffineTransformIdentity;
+                //self.transform = CGAffineTransformIdentity;
               }];
 }
 
