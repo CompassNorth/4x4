@@ -130,7 +130,7 @@
 
 - (void)_scoreBubbles:(NSArray<IndBubble *> *) allBubbles
 {
-  if (allBubbles.count >= 1) {
+  if (allBubbles.count <= 1) {
     return;
   }
 
