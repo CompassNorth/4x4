@@ -13,7 +13,7 @@
 		5837751C237C8330002ED977 /* ColorProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5837751B237C8330002ED977 /* ColorProvider.m */; };
 		5887BD4823763DCF0063E472 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD4723763DCF0063E472 /* AppDelegate.m */; };
 		5887BD4B23763DCF0063E472 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD4A23763DCF0063E472 /* SceneDelegate.m */; };
-		5887BD4E23763DCF0063E472 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD4D23763DCF0063E472 /* ViewController.m */; };
+		5887BD4E23763DCF0063E472 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD4D23763DCF0063E472 /* GameViewController.m */; };
 		5887BD5123763DCF0063E472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5887BD4F23763DCF0063E472 /* Main.storyboard */; };
 		5887BD5323763DD00063E472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5887BD5223763DD00063E472 /* Assets.xcassets */; };
 		5887BD5923763DD00063E472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887BD5823763DD00063E472 /* main.m */; };
@@ -36,8 +36,8 @@
 		5887BD4723763DCF0063E472 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5887BD4923763DCF0063E472 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		5887BD4A23763DCF0063E472 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		5887BD4C23763DCF0063E472 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5887BD4D23763DCF0063E472 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5887BD4C23763DCF0063E472 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		5887BD4D23763DCF0063E472 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		5887BD5023763DCF0063E472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5887BD5223763DD00063E472 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5887BD5723763DD00063E472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 				5887BD4723763DCF0063E472 /* AppDelegate.m */,
 				5887BD4923763DCF0063E472 /* SceneDelegate.h */,
 				5887BD4A23763DCF0063E472 /* SceneDelegate.m */,
-				5887BD4C23763DCF0063E472 /* ViewController.h */,
-				5887BD4D23763DCF0063E472 /* ViewController.m */,
+				5887BD4C23763DCF0063E472 /* GameViewController.h */,
+				5887BD4D23763DCF0063E472 /* GameViewController.m */,
 				589B476E2380B21700609D44 /* UILayoutHelpers.h */,
 				589B476F2380B22400609D44 /* UILayoutHelpers.m */,
 				58BF6A19237CDF6A00D1836E /* BubbleView */,
@@ -197,7 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5887BD4E23763DCF0063E472 /* ViewController.m in Sources */,
+				5887BD4E23763DCF0063E472 /* GameViewController.m in Sources */,
 				589B47702380B22400609D44 /* UILayoutHelpers.m in Sources */,
 				5837751C237C8330002ED977 /* ColorProvider.m in Sources */,
 				107C6005239E675B0030E199 /* AdViewController.m in Sources */,

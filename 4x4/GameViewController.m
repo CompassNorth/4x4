@@ -6,7 +6,7 @@
 //  Copyright © 2019 Nicole Maguire. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GameViewController.h"
 #import "BubbleViewController.h"
 #import "UILayoutHelpers.h"
 #import "ColorProvider.h"
@@ -15,13 +15,13 @@ static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
 static const NSString *kHighScoreKey = @"highScore";
 
-@interface ViewController () <
+@interface GameViewController () <
   BubbleViewControllerDelegate
 >
 
 @end
 
-@implementation ViewController{
+@implementation GameViewController{
   BubbleViewController *_bubbleViewController;
   UIButton *_newGameButton;
   UILabel *_scoreLabel;
