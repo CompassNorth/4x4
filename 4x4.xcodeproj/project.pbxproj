@@ -23,6 +23,8 @@
 		58F7E8E1239E69480067C4E3 /* UISpringButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E0239E69480067C4E3 /* UISpringButton.m */; };
 		58F7E8E5239E83CD0067C4E3 /* EmojiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E4239E83CD0067C4E3 /* EmojiProvider.m */; };
 		58F7E8E9239E9D400067C4E3 /* InterstitialPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8E8239E9D400067C4E3 /* InterstitialPresenter.m */; };
+		58F7E8EE239F09900067C4E3 /* InterstitialQuizDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8ED239F09900067C4E3 /* InterstitialQuizDataSource.m */; };
+		58F7E8F2239F0A680067C4E3 /* InterstitialQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7E8F1239F0A680067C4E3 /* InterstitialQuestion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,10 @@
 		58F7E8E4239E83CD0067C4E3 /* EmojiProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiProvider.m; sourceTree = "<group>"; };
 		58F7E8E7239E9D340067C4E3 /* InterstitialPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialPresenter.h; sourceTree = "<group>"; };
 		58F7E8E8239E9D400067C4E3 /* InterstitialPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialPresenter.m; sourceTree = "<group>"; };
+		58F7E8EC239EC1DD0067C4E3 /* InterstitialQuizDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialQuizDataSource.h; sourceTree = "<group>"; };
+		58F7E8ED239F09900067C4E3 /* InterstitialQuizDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialQuizDataSource.m; sourceTree = "<group>"; };
+		58F7E8F0239F0A5A0067C4E3 /* InterstitialQuestion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialQuestion.h; sourceTree = "<group>"; };
+		58F7E8F1239F0A680067C4E3 /* InterstitialQuestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialQuestion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 				5887BD5223763DD00063E472 /* Assets.xcassets */,
 				5887BD5723763DD00063E472 /* Info.plist */,
 				5887BD5823763DD00063E472 /* main.m */,
+				58F7E8EF239F0A2F0067C4E3 /* QuestionInterstitial */,
 				58F7E8E6239E9CFD0067C4E3 /* InterstitialPresenter */,
 				107C6006239E67800030E199 /* AdViewController.h */,
 				107C6004239E675B0030E199 /* AdViewController.m */,
@@ -151,8 +158,19 @@
 			children = (
 				58F7E8E7239E9D340067C4E3 /* InterstitialPresenter.h */,
 				58F7E8E8239E9D400067C4E3 /* InterstitialPresenter.m */,
+				58F7E8EC239EC1DD0067C4E3 /* InterstitialQuizDataSource.h */,
+				58F7E8ED239F09900067C4E3 /* InterstitialQuizDataSource.m */,
 			);
 			path = InterstitialPresenter;
+			sourceTree = "<group>";
+		};
+		58F7E8EF239F0A2F0067C4E3 /* QuestionInterstitial */ = {
+			isa = PBXGroup;
+			children = (
+				58F7E8F0239F0A5A0067C4E3 /* InterstitialQuestion.h */,
+				58F7E8F1239F0A680067C4E3 /* InterstitialQuestion.m */,
+			);
+			path = QuestionInterstitial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +247,9 @@
 				589B47702380B22400609D44 /* UILayoutHelpers.m in Sources */,
 				58F7E8E5239E83CD0067C4E3 /* EmojiProvider.m in Sources */,
 				58F7E8E9239E9D400067C4E3 /* InterstitialPresenter.m in Sources */,
+				58F7E8F2239F0A680067C4E3 /* InterstitialQuestion.m in Sources */,
 				5837751C237C8330002ED977 /* ColorProvider.m in Sources */,
+				58F7E8EE239F09900067C4E3 /* InterstitialQuizDataSource.m in Sources */,
 				107C6005239E675B0030E199 /* AdViewController.m in Sources */,
 				5887BD4823763DCF0063E472 /* AppDelegate.m in Sources */,
 				5887BD6123763E0F0063E472 /* BubbleView.m in Sources */,

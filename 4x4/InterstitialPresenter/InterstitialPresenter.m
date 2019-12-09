@@ -10,38 +10,62 @@
 #import "InterstitialPresenter.h"
 #import "AdVideoViewController.h"
 #import "AdViewController.h"
+#import "InterstitialQuestion.h"
+#import "InterstitialQuizDataSource.h"
 
 @implementation InterstitialPresenter {
-  int _currentTipCount;
+  int _currentQuizTipCount;
+  int _currentVideoTipCount;
+  bool _showVideo;
+  NSArray<InterstitialQuestion *> *_questions;
 }
 
 - (instancetype)init {
   if (self = [super init]) {
-    _currentTipCount = 0;
+    _currentQuizTipCount = 0;
+    _currentVideoTipCount = 0;
+    _showVideo = YES;
+    _questions = [InterstitialQuizDataSource dataSourceQuestions];
   }
   return self;
 }
 
 - (void)showInterstitialFromViewController:(UIViewController *)controller
 {
-  UIViewController *nextVC = [self _createTipVCForIndex:_currentTipCount];
-  [controller showViewController:nextVC sender:controller];
-  _currentTipCount++;
+  UIViewController *nextVC = [self _createTipVC];
+  [controller showViewController:nextVC sender:self];
 }
 
-- (UIViewController *)_createTipVCForIndex:(int)index
+- (UIViewController *)_createTipVC
 {
-  return [self _createVideoTipVC];
+  UIViewController *tipVC;
+  if (_showVideo) {
+    tipVC = [self _createVideoTipVC];
+  } else {
+    tipVC = [self _createQuestionTipVC];
+  }
+  _showVideo = !_showVideo;
+  return tipVC;
 }
 
 - (UIViewController *)_createVideoTipVC
 {
+  // TODO: Get a range of videos to upload here
   return [AdVideoViewController new];
 }
 
 - (UIViewController *)_createQuestionTipVC
 {
-  return [AdViewController new];
+  if (_currentQuizTipCount >= _questions.count) {
+    _currentQuizTipCount = 0;
+  }
+  InterstitialQuestion *question = _questions[_currentQuizTipCount++];
+
+  AdViewController *vc = [AdViewController new];
+  vc.question = question.question;
+  vc.answers = question.answers;
+  vc.correctAnswerIndex = question.correctAnswerIndex;
+  return vc;
 }
 
 @end
