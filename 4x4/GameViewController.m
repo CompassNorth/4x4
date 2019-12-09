@@ -40,6 +40,7 @@ static const NSString *kHighScoreKey = @"highScore";
   double _score;
   double _highScore;
   double _moveCount;
+  double _coinCount;
 }
 
 - (void)viewDidLoad {
@@ -80,6 +81,7 @@ static const NSString *kHighScoreKey = @"highScore";
   [self _updateScore:0];
   [self _updateHighScore:[[[NSUserDefaults standardUserDefaults] valueForKey:kHighScoreKey] doubleValue]];
   _moveCount = 0;
+  _coinCount = 0;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -204,6 +206,11 @@ static const NSString *kHighScoreKey = @"highScore";
 - (void)_showInterstitial
 {
   // TODO : Transition into the child safety skill interstitial
+}
+
+- (void)_updateCoinCount:(double)coinsToAdd
+{
+  _coinCount += coinsToAdd;
 }
 
 
