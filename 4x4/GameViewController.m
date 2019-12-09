@@ -10,9 +10,11 @@
 #import "BubbleViewController.h"
 #import "UILayoutHelpers.h"
 #import "ColorProvider.h"
+#import "UISpringButton.h"
 
 static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
+static CGFloat kContentUnderBuffer = 10;
 static const NSString *kHighScoreKey = @"highScore";
 
 @interface GameViewController () <
@@ -23,7 +25,7 @@ static const NSString *kHighScoreKey = @"highScore";
 
 @implementation GameViewController{
   BubbleViewController *_bubbleViewController;
-  UIButton *_newGameButton;
+  UISpringButton *_newGameButton;
   UILabel *_scoreLabel;
   UILabel *_highScoreLabel;
   UILabel *_noMoreMovesLabel;
@@ -38,10 +40,12 @@ static const NSString *kHighScoreKey = @"highScore";
   _bubbleViewController.delegate = self;
   [self.view addSubview:_bubbleViewController.view];
 
-  _newGameButton = [UIButton new];
+  _newGameButton = [UISpringButton new];
   [_newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
   [_newGameButton setTitleColor:ColorProvider.fontColor forState:UIControlStateNormal];
   [_newGameButton addTarget:self action:@selector(_didTapNewGame) forControlEvents:UIControlEventTouchUpInside];
+  _newGameButton.backgroundColor = ColorProvider.oneTwoEightColor;
+  _newGameButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
   [self.view addSubview:_newGameButton];
 
   _scoreLabel = [UILabel new];
@@ -72,17 +76,19 @@ static const NSString *kHighScoreKey = @"highScore";
                                  bubbles_width,
                                  bubbles_width);
 
-  _newGameButton.frame = CGRectMake(50, 100, 0, 0);
-  [_newGameButton sizeToFit];
-  _newGameButton.backgroundColor = [UIColor blueColor]; // TODO : Make this much prettier
-
   _scoreLabel.frame = CGRectMake(0, 200, 0, 0);
   [_scoreLabel sizeToFit];
   [UILayoutHelpers horizontallyCenterView:_scoreLabel withinView:self.view];
 
-  _highScoreLabel.frame = CGRectMake(0, 260, 0, 0);
+  _highScoreLabel.frame = CGRectMake(0, CGRectGetMaxY(_scoreLabel.frame) + kContentUnderBuffer, 0, 0);
   [_highScoreLabel sizeToFit];
   [UILayoutHelpers horizontallyCenterView:_highScoreLabel withinView:self.view];
+
+  _newGameButton.frame = CGRectMake(0, CGRectGetMaxY(_highScoreLabel.frame) + kContentUnderBuffer, 0, 0);
+  [_newGameButton sizeToFit];
+  [UILayoutHelpers horizontallyCenterView:_newGameButton withinView:self.view];
+  _newGameButton.layer.cornerRadius = _newGameButton.frame.size.height / 2;
+
 
   _noMoreMovesLabel.frame = CGRectMake(50,
                                      CGRectGetMaxY(_bubbleViewController.view.frame) + 20,
