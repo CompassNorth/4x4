@@ -38,12 +38,14 @@ static CGFloat kSideBuffer = 25;
   
   answerButtons = [NSMutableArray new];
   
+  NSArray *localAnswers = @[@"Answer1", @"Answer2", @"Answer3"];
+  
   for (int i = 0; i < 3; i++) {
     NSLog(@"Adding button");
     // Add each answer
     // answerButton = [answerButtons objectAtIndex:i];
     UIButton* answerButton = [UIButton new];
-    [answerButton setTitle:[self.answers objectAtIndex:i] forState:UIControlStateNormal];
+    [answerButton setTitle:[localAnswers objectAtIndex:i] forState:UIControlStateNormal];
     [answerButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [answerButton addTarget:self action:@selector(_didTapAnswer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:answerButton];
@@ -88,14 +90,22 @@ static CGFloat kSideBuffer = 25;
   
 #pragma mark - Private
 
-- (void)_didTapAnswer:(UIButton *)button
+- (void)_didTapAnswer:(UIButton *)selectedButton
 {
-  if (correctAnswer == button) {
-    [button setBackgroundColor:UIColor.greenColor];
+  if (correctAnswer == selectedButton) {
+    for (UIButton *button in answerButtons) {
+      if (button == selectedButton) {
+        [button setBackgroundColor:UIColor.greenColor];
+      } else {
+        [button setBackgroundColor:UIColor.redColor];
+      }
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:Nil];
     // Add coins and show coin image
   } else {
-    [button setBackgroundColor:UIColor.redColor];
-    button.enabled = NO;
+    [selectedButton setBackgroundColor:UIColor.redColor];
+    selectedButton.enabled = NO;
     answerCount += 1;
   }
   
