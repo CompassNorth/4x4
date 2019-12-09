@@ -97,8 +97,6 @@
 				5887BD4D23763DCF0063E472 /* GameViewController.m */,
 				58F7E8DE239E64B00067C4E3 /* UIHelpers */,
 				58BF6A19237CDF6A00D1836E /* BubbleView */,
-				5837751A237C831F002ED977 /* ColorProvider.h */,
-				5837751B237C8330002ED977 /* ColorProvider.m */,
 				5887BD4F23763DCF0063E472 /* Main.storyboard */,
 				5887BD5223763DD00063E472 /* Assets.xcassets */,
 				5887BD5723763DD00063E472 /* Info.plist */,
@@ -142,6 +140,8 @@
 				589B476E2380B21700609D44 /* UILayoutHelpers.h */,
 				58F7E8DF239E693B0067C4E3 /* UISpringButton.h */,
 				58F7E8E0239E69480067C4E3 /* UISpringButton.m */,
+				5837751A237C831F002ED977 /* ColorProvider.h */,
+				5837751B237C8330002ED977 /* ColorProvider.m */,
 			);
 			path = UIHelpers;
 			sourceTree = "<group>";
