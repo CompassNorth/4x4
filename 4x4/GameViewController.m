@@ -14,8 +14,10 @@
 #import "InterstitialPresenter.h"
 
 static CGFloat kSideBuffer = 25;
-static CGFloat kUnderBuffer = 100;
+static CGFloat kUnderBuffer = 15;
+static CGFloat kCoinStartBuffer = 25;
 static CGFloat kContentUnderBuffer = 10;
+static CGFloat kActionButtonStartBuffer = 75;
 static CGFloat kNumberOfMovesBeforeInterstitial = 5;
 static CGFloat kActionButtonSize = 60;
 static CGFloat kActionButtonImageSize = 45;
@@ -105,7 +107,7 @@ InterstitialPresenterDelegate
   const CGFloat height = [UIScreen mainScreen].bounds.size.height;
   const CGFloat bubbles_width = width - kSideBuffer * 2;
 
-  _coinLabel.frame = CGRectMake(0, 65, 0, 0);
+  _coinLabel.frame = CGRectMake(0, kCoinStartBuffer, 0, 0);
   [_coinLabel sizeToFit];
   [UILayoutHelpers rightSideOffsetView:_coinLabel withinView:self.view byOffset:kSideBuffer];
 
@@ -116,7 +118,7 @@ InterstitialPresenterDelegate
 
   [self _layoutActionButtons];
   _actionButtonView.frame = CGRectMake(0,
-                                       150,
+                                       kActionButtonStartBuffer,
                                        (kActionButtonSize * 3) + (kActionButtonBuffer * 2),
                                        kActionButtonSize);
   [UILayoutHelpers horizontallyCenterView:_actionButtonView withinView:self.view];
