@@ -17,6 +17,8 @@ static CGFloat kSideBuffer = 25;
 @implementation AdViewController {
   UILabel *_titleLabel;
   UILabel *_questionLabel;
+  UILabel *_additionalInformationLabel;
+  UIButton *_exitButton;
   NSMutableArray *answerButtons;
   UIButton *correctAnswer;
   int answerCount;
@@ -26,21 +28,34 @@ static CGFloat kSideBuffer = 25;
   answerCount = 0;
   
   self.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
+
   
+
   // Add the title
   _titleLabel = [UILabel new];
   _titleLabel.font = [UIFont boldSystemFontOfSize:50];
-  _titleLabel.text = @"Quizz";
+  _titleLabel.text = @"Pop Quiz";
   _titleLabel.alpha = 1.0;
   _titleLabel.textColor = UIColor.blackColor;
   [self.view addSubview:_titleLabel];
   
   // Add the question
   _questionLabel = [UILabel new];
-  _questionLabel.font = [UIFont boldSystemFontOfSize:50];
-  _questionLabel.text = @"Question";
+  _questionLabel.font = [UIFont systemFontOfSize:30];
+  _questionLabel.numberOfLines = 0;
+  _questionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+  _questionLabel.textAlignment = NSTextAlignmentCenter;
+  _questionLabel.text = _question;
   _questionLabel.textColor = UIColor.blackColor;
   [self.view addSubview:_questionLabel];
+  
+  _additionalInformationLabel = [UILabel new];
+  _additionalInformationLabel.numberOfLines = 0;
+  _additionalInformationLabel.lineBreakMode = NSLineBreakByWordWrapping;
+  _additionalInformationLabel.textAlignment = NSTextAlignmentCenter;
+  _additionalInformationLabel.text = _additionalInformation;
+  _additionalInformationLabel.hidden = YES;
+  [self.view addSubview:_additionalInformationLabel];
   
   answerButtons = [NSMutableArray new];
   
@@ -64,18 +79,18 @@ static CGFloat kSideBuffer = 25;
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   
-  // const CGFloat width = [UIScreen mainScreen].bounds.size.width;
-  // const CGFloat height = [UIScreen mainScreen].bounds.size.height;
-  // const CGFloat bubbles_width = width - kSideBuffer * 2;
-  
-  _titleLabel.frame = CGRectMake(0, 200, 0, 0);
+  _titleLabel.frame = CGRectMake(0, 75, 0, 0);
   [_titleLabel sizeToFit];
   [UILayoutHelpers horizontallyCenterView:_titleLabel withinView:self.view];
   
-  _questionLabel.frame = CGRectMake(0, CGRectGetMaxY(_titleLabel.frame) + 20, 0, 0);
-  [_questionLabel sizeToFit];
+  CGSize questionSize = [_questionLabel sizeThatFits:self.view.frame.size];
+  _questionLabel.frame = CGRectMake(0,
+                                    CGRectGetMaxY(_titleLabel.frame) + 20,
+                                    questionSize.width,
+                                    questionSize.height);
   [UILayoutHelpers horizontallyCenterView:_questionLabel withinView:self.view];
   
+  CGRect finalAnswerFrame;
   for (int i = 0; i < answerButtons.count; i++) {
     UIButton* answerButton = [answerButtons objectAtIndex:i];
     if (i > 0) {
@@ -87,9 +102,15 @@ static CGFloat kSideBuffer = 25;
     
     [answerButton sizeToFit];
     [UILayoutHelpers horizontallyCenterView:answerButton withinView:self.view];
+    
+    finalAnswerFrame = answerButton.frame;
   }
-}
   
+  CGSize extraSize = [_additionalInformationLabel sizeThatFits:self.view.frame.size];
+  _additionalInformationLabel.frame = CGRectMake(0, CGRectGetMaxY(finalAnswerFrame) + 20, extraSize.width, extraSize.height);
+  [UILayoutHelpers horizontallyCenterView:_additionalInformationLabel withinView:self.view];
+}
+
 #pragma mark - Private
 
 - (void)_didTapAnswer:(UIButton *)selectedButton
@@ -102,9 +123,9 @@ static CGFloat kSideBuffer = 25;
         [button setBackgroundColor:UIColor.redColor];
       }
     }
-
-    [self performSelector:@selector(_dismissSelf) withObject:self afterDelay:0.5];
-
+    _additionalInformationLabel.hidden = NO;
+    [_delegate interstitialFinishedWithCoins:2];
+    [self performSelector:@selector(_dismissSelf) withObject:self afterDelay:1]; //MOVE THIS INTO THE X BUTTOn
   } else {
     [selectedButton setBackgroundColor:UIColor.redColor];
     selectedButton.enabled = NO;
@@ -116,8 +137,6 @@ static CGFloat kSideBuffer = 25;
 
 - (void)_dismissSelf
 {
-  // Add coins and show coin image
-  [_delegate interstitialFinishedWithCoins:2];
   [self dismissViewControllerAnimated:YES completion:Nil];
 }
 

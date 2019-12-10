@@ -16,10 +16,14 @@
   NSArray<NSString *> *answers = @[@"A funny joke", @"Where you are", @"Your phone number"];
   InterstitialQuestion *tellStranger = [[InterstitialQuestion alloc] initWithQuestion:@"Which of these is okay to tell someone you met online" answers:answers correctAnswerIndex:0];
 
-  answers = @[@"Tell a friend", @"Tell an adult", @"Nothing"];
+  answers = @[@"👯 Tell a friend 👯", @"👪 Tell an adult 👪", @"💨 Nothing 💨"];
   InterstitialQuestion *uncomfy = [[InterstitialQuestion alloc] initWithQuestion:@"What should you do if someone on the internet makes you feel sad, scared, or confused?" answers:answers correctAnswerIndex:1];
 
-  return @[tellStranger, uncomfy];
+  answers = @[@"yes", @"no"];
+  InterstitialQuestion *moreInfo = [[InterstitialQuestion alloc] initWithQuestion:@"I'm online and I meet someone my age in a chat room. Is it OK to give him or her my address or phone number so we can get together?" answers:answers correctAnswerIndex:1];
+  moreInfo.additionalInformation = @"You should NEVER give out your name or address to anyone you meet online. If you really want to have an offline conversation with this person, check with your parents to see if they can think of a safe way to arrange it.";
+
+  return @[uncomfy, moreInfo, tellStranger];
 }
 
 +(NSArray<NSURL *> *)dataSourceVideos

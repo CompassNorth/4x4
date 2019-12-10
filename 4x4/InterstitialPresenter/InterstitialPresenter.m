@@ -31,7 +31,7 @@
   if (self = [super init]) {
     _currentQuizTipCount = 0;
     _currentVideoTipCount = 0;
-    _showVideo = YES;
+    _showVideo = NO;//YES;
     _questions = [InterstitialQuizDataSource dataSourceQuestions];
     _videoURLs = [InterstitialQuizDataSource dataSourceVideos];
   }
@@ -88,6 +88,7 @@
   vc.question = question.question;
   vc.answers = question.answers;
   vc.correctAnswerIndex = question.correctAnswerIndex;
+  vc.additionalInformation = question.additionalInformation;
   vc.delegate = self;
   return vc;
 }

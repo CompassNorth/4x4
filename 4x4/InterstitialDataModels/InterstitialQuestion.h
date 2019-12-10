@@ -20,6 +20,7 @@
 @property int correctAnswerIndex;
 @property NSString *question;
 @property NSArray<NSString*> *answers;
+@property NSString *additionalInformation;
 
 @end
 

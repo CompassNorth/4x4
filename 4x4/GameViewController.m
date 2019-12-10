@@ -15,10 +15,10 @@
 
 static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 15;
-static CGFloat kCoinStartBuffer = 25;
+static CGFloat kCoinStartBuffer = 30;
 static CGFloat kContentUnderBuffer = 10;
 static CGFloat kActionButtonStartBuffer = 75;
-static CGFloat kNumberOfMovesBeforeInterstitial = 5;
+static CGFloat kNumberOfMovesBeforeInterstitial = 1;
 static CGFloat kActionButtonSize = 60;
 static CGFloat kActionButtonImageSize = 45;
 static CGFloat kActionButtonBuffer = 25;
@@ -105,7 +105,7 @@ InterstitialPresenterDelegate
 
   const CGFloat width = [UIScreen mainScreen].bounds.size.width;
   const CGFloat height = [UIScreen mainScreen].bounds.size.height;
-  const CGFloat bubbles_width = width - kSideBuffer * 2;
+  const CGFloat bubbles_width = (width - kSideBuffer * 2) + 10;
 
   _coinLabel.frame = CGRectMake(0, kCoinStartBuffer, 0, 0);
   [_coinLabel sizeToFit];

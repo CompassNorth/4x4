@@ -21,9 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//  NSString *fullpath = [[self documentsDirectory] stringByAppendingPathComponent:@"20191209_134415.mp4"];
-//  //NSLog(@"Path %@", fullpath);
-//  videoURL = [NSURL URLWithString:@"https://sos-ch-dk-2.exo.io/eu.privately.file.sharing/fb_hackathon_test.mp4"];
   AVPlayerItem* playerItem = [AVPlayerItem playerItemWithURL:videoUrl];
   AVPlayer* playVideo = [[AVPlayer alloc] initWithPlayerItem:playerItem];
   playerViewController = [[AVPlayerViewController alloc] init];
