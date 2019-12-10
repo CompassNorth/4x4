@@ -63,6 +63,7 @@
 		58F7E8ED239F09900067C4E3 /* InterstitialQuizDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialQuizDataSource.m; sourceTree = "<group>"; };
 		58F7E8F0239F0A5A0067C4E3 /* InterstitialQuestion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialQuestion.h; sourceTree = "<group>"; };
 		58F7E8F1239F0A680067C4E3 /* InterstitialQuestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialQuestion.m; sourceTree = "<group>"; };
+		58F7E8F6239F7F8C0067C4E3 /* InterstitialViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +158,7 @@
 				58F7E8E8239E9D400067C4E3 /* InterstitialPresenter.m */,
 				58F7E8EC239EC1DD0067C4E3 /* InterstitialQuizDataSource.h */,
 				58F7E8ED239F09900067C4E3 /* InterstitialQuizDataSource.m */,
+				58F7E8F4239F7F3E0067C4E3 /* InterstitialViewControllers */,
 			);
 			path = InterstitialPresenter;
 			sourceTree = "<group>";
@@ -179,6 +181,14 @@
 				5887BD4623763DCF0063E472 /* AppDelegate.h */,
 			);
 			path = "App Stuff";
+			sourceTree = "<group>";
+		};
+		58F7E8F4239F7F3E0067C4E3 /* InterstitialViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				58F7E8F6239F7F8C0067C4E3 /* InterstitialViewControllerDelegate.h */,
+			);
+			path = InterstitialViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

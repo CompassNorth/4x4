@@ -10,9 +10,20 @@
 #define InterstitialPresenter_h
 #import <UIKit/UIKit.h>
 
+@class InterstitialPresenter;
+
+@protocol InterstitialPresenterDelegate <NSObject>
+
+- (void)interstitialPresenter:(InterstitialPresenter *)presenter
+                 didEarnCoins:(int)coinsEarned;
+
+@end
+
 @interface InterstitialPresenter : NSObject
 
 - (void)showInterstitialFromViewController:(UIViewController *)controller;
+
+@property (nonatomic, weak, nullable) NSObject<InterstitialPresenterDelegate> *delegate;
 
 @end
 

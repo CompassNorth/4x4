@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InterstitialViewControllerDelegate.h"
 
 @interface AdViewController : UIViewController
 
+@property (nonatomic, weak, nullable) NSObject<InterstitialViewControllerDelegate> *delegate;
 @property int correctAnswerIndex;
 @property NSString *quizzTitle;
 @property NSString *question;
 @property NSArray<NSString*> *answers;
+
 @end
 

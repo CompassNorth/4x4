@@ -12,11 +12,17 @@
 #import "AdViewController.h"
 #import "InterstitialQuestion.h"
 #import "InterstitialQuizDataSource.h"
+#import "InterstitialViewControllerDelegate.h"
+
+@interface InterstitialPresenter () <
+  InterstitialViewControllerDelegate
+>
+@end
 
 @implementation InterstitialPresenter {
   int _currentQuizTipCount;
   int _currentVideoTipCount;
-  bool _showVideo;
+  bool _showVideo; 
   NSArray<InterstitialQuestion *> *_questions;
 }
 
@@ -36,6 +42,15 @@
   [controller showViewController:nextVC sender:self];
 }
 
+#pragma mark - InterstitialViewControllerDelegate
+
+- (void)interstitialFinishedWithCoins:(int)coinsEarned
+{
+  [_delegate interstitialPresenter:self didEarnCoins:coinsEarned];
+}
+
+#pragma mark - Private
+
 - (UIViewController *)_createTipVC
 {
   UIViewController *tipVC;
@@ -51,6 +66,7 @@
 - (UIViewController *)_createVideoTipVC
 {
   // TODO: Get a range of videos to upload here
+  [self interstitialFinishedWithCoins:2];
   return [AdVideoViewController new];
 }
 
@@ -65,6 +81,7 @@
   vc.question = question.question;
   vc.answers = question.answers;
   vc.correctAnswerIndex = question.correctAnswerIndex;
+  vc.delegate = self;
   return vc;
 }
 

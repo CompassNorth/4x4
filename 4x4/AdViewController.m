@@ -44,7 +44,7 @@ static CGFloat kSideBuffer = 25;
   
   answerButtons = [NSMutableArray new];
   
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < _answers.count; i++) {
     // Add each answer
     // answerButton = [answerButtons objectAtIndex:i];
     UIButton* answerButton = [UISpringButton new];
@@ -59,7 +59,6 @@ static CGFloat kSideBuffer = 25;
       correctAnswer = answerButton;
     }
   }
-  
 }
 
 - (void)viewWillLayoutSubviews {
@@ -117,8 +116,9 @@ static CGFloat kSideBuffer = 25;
 
 - (void)_dismissSelf
 {
-  [self dismissViewControllerAnimated:YES completion:Nil];
   // Add coins and show coin image
+  [_delegate interstitialFinishedWithCoins:2];
+  [self dismissViewControllerAnimated:YES completion:Nil];
 }
 
 

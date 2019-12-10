@@ -16,14 +16,15 @@
 static CGFloat kSideBuffer = 25;
 static CGFloat kUnderBuffer = 100;
 static CGFloat kContentUnderBuffer = 10;
-static CGFloat kNumberOfMovesBeforeInterstitial = 1;
+static CGFloat kNumberOfMovesBeforeInterstitial = 5;
 static CGFloat kActionButtonSize = 60;
 static CGFloat kActionButtonImageSize = 45;
 static CGFloat kActionButtonBuffer = 25;
 static const NSString *kHighScoreKey = @"highScore";
 
 @interface GameViewController () <
-  BubbleViewControllerDelegate
+BubbleViewControllerDelegate,
+InterstitialPresenterDelegate
 >
 
 @end
@@ -65,6 +66,8 @@ static const NSString *kHighScoreKey = @"highScore";
   [self.view addSubview:_actionButtonView];
 
   _shuffleButton = [self _createActionButtonWithImageName:@"shuffleIcon" backgroundColor:ColorProvider.twokColor];
+  [_shuffleButton addTarget:self action:@selector(_shuffle) forControlEvents:UIControlEventTouchUpInside];
+
   _undoButton = [self _createActionButtonWithImageName:@"undoIcon" backgroundColor:ColorProvider.fourNineSixColor];
   _hammerButton = [self _createActionButtonWithImageName:@"hammerIcon" backgroundColor:ColorProvider.onekColor];
 
@@ -92,6 +95,7 @@ static const NSString *kHighScoreKey = @"highScore";
   _coinCount = 0;
 
   _interstitialPresenter = [InterstitialPresenter new];
+  _interstitialPresenter.delegate = self;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -106,9 +110,9 @@ static const NSString *kHighScoreKey = @"highScore";
   [UILayoutHelpers rightSideOffsetView:_coinLabel withinView:self.view byOffset:kSideBuffer];
 
   _bubbleViewController.view.frame = CGRectMake(kSideBuffer,
-                                 height - kUnderBuffer - bubbles_width,
-                                 bubbles_width,
-                                 bubbles_width);
+                                                height - kUnderBuffer - bubbles_width,
+                                                bubbles_width,
+                                                bubbles_width);
 
   [self _layoutActionButtons];
   _actionButtonView.frame = CGRectMake(0,
@@ -132,9 +136,9 @@ static const NSString *kHighScoreKey = @"highScore";
 
 
   _noMoreMovesLabel.frame = CGRectMake(50,
-                                     CGRectGetMaxY(_bubbleViewController.view.frame) + 20,
-                                     0,
-                                     0);
+                                       CGRectGetMaxY(_bubbleViewController.view.frame) + 20,
+                                       0,
+                                       0);
   [_noMoreMovesLabel sizeToFit];
   [UILayoutHelpers horizontallyCenterView:_noMoreMovesLabel withinView:self.view];
 }
@@ -152,7 +156,12 @@ static const NSString *kHighScoreKey = @"highScore";
   [self.view setNeedsLayout];
 }
 
+#pragma mark - InterstitialPresenterDelegate
 
+- (void)interstitialPresenter:(InterstitialPresenter *)presenter didEarnCoins:(int)coinsEarned
+{
+  [self _updateCoinCount:_coinCount + coinsEarned];
+}
 #pragma mark - Private
 
 - (UISpringButton *)_createActionButtonWithImageName:(NSString *)imageName
@@ -166,6 +175,7 @@ static const NSString *kHighScoreKey = @"highScore";
   [button setImage:hammerImage forState:UIControlStateNormal];
   [button setTitleColor:ColorProvider.fontColor forState:UIControlStateNormal];
   button.backgroundColor = backgroundColor;
+  button.enabled = NO;
   [_actionButtonView addSubview:button];
   return button;
 }
@@ -179,21 +189,15 @@ static const NSString *kHighScoreKey = @"highScore";
 
 - (void)_didTapNewGame
 {
-  
-  /*_noMoreMovesLabel.hidden = YES;
-
   [self _updateScore:0];
-
-  [_bubbleViewController.view removeFromSuperview];
-  _bubbleViewController = [BubbleViewController new];
-  _bubbleViewController.delegate = self;
-  [self.view addSubview:_bubbleViewController.view];
-  [self.view setNeedsLayout];*/
+  [self _shuffle];
 }
 
 - (void)_updateScore:(int)score
 {
-  [self _increaseMoveCount];
+  if (score > 0 ) {
+    [self _increaseMoveCount];
+  }
   _score = score;
   _scoreLabel.text = [NSString stringWithFormat:@"%.0f", _score];
   if (_score > _highScore) {
@@ -207,6 +211,17 @@ static const NSString *kHighScoreKey = @"highScore";
   _highScore = score;
   _highScoreLabel.text = [NSString stringWithFormat:@"High Score : %.0f", _highScore];
   [[NSUserDefaults standardUserDefaults] setValue:@(_highScore) forKey:kHighScoreKey];
+  [self.view setNeedsLayout];
+}
+
+- (void)_shuffle
+{
+  _noMoreMovesLabel.hidden = YES;
+
+  [_bubbleViewController.view removeFromSuperview];
+  _bubbleViewController = [BubbleViewController new];
+  _bubbleViewController.delegate = self;
+  [self.view addSubview:_bubbleViewController.view];
   [self.view setNeedsLayout];
 }
 
@@ -229,12 +244,13 @@ static const NSString *kHighScoreKey = @"highScore";
 {
   _coinCount = coinCount;
   _coinLabel.text = [NSString stringWithFormat:@"Coins: %0.0f", _coinCount];
-  if (_coinCount > 0) {
+  if (_coinCount > 3) {
     // TODO: Update the score bubble to reflect the number of coins
     // TODO: unlock hammer if the coin count is high enough (med coin)
-    // TODO: unlock reshuffle if the coin is high enough (high coin)
+    _shuffleButton.enabled = YES;
     // TODO: unlock undo if the coin is high enough (low coin)
   }
+  [self.view setNeedsLayout];
 }
 
 
