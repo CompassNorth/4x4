@@ -29,7 +29,12 @@ static CGFloat kSideBuffer = 25;
   
   self.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
 
-  
+  _exitButton = [UIButton new];
+  [_exitButton setTitle:@"X" forState:UIControlStateNormal];
+  [_exitButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  _exitButton.hidden = YES;
+  [_exitButton addTarget:self action:@selector(_dismissSelf) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:_exitButton];
 
   // Add the title
   _titleLabel = [UILabel new];
@@ -78,6 +83,10 @@ static CGFloat kSideBuffer = 25;
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
+
+  _exitButton.frame = CGRectMake(0, 15, 0, 0);
+  [_exitButton sizeToFit];
+  [UILayoutHelpers rightSideOffsetView:_exitButton withinView:self.view byOffset:15];
   
   _titleLabel.frame = CGRectMake(0, 75, 0, 0);
   [_titleLabel sizeToFit];
@@ -124,8 +133,8 @@ static CGFloat kSideBuffer = 25;
       }
     }
     _additionalInformationLabel.hidden = NO;
+    _exitButton.hidden = NO;
     [_delegate interstitialFinishedWithCoins:2];
-    [self performSelector:@selector(_dismissSelf) withObject:self afterDelay:1]; //MOVE THIS INTO THE X BUTTOn
   } else {
     [selectedButton setBackgroundColor:UIColor.redColor];
     selectedButton.enabled = NO;

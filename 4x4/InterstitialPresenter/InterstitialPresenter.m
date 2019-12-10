@@ -61,7 +61,7 @@
   } else {
     tipVC = [self _createQuestionTipVC];
   }
-  _showVideo = !_showVideo;
+//  _showVideo = !_showVideo;
   return tipVC;
 }
 
