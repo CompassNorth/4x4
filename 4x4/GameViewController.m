@@ -57,7 +57,7 @@ static const NSString *kHighScoreKey = @"highScore";
   [_newGameButton setTitleColor:ColorProvider.fontColor forState:UIControlStateNormal];
   [_newGameButton addTarget:self action:@selector(_didTapNewGame) forControlEvents:UIControlEventTouchUpInside];
   _newGameButton.backgroundColor = ColorProvider.oneTwoEightColor;
-  _newGameButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+  [UILayoutHelpers addStandardButtonInsets:_newGameButton];
   [self.view addSubview:_newGameButton];
 
   _actionButtonView = [UIView new];
