@@ -31,7 +31,7 @@
   if (self = [super init]) {
     _currentQuizTipCount = 0;
     _currentVideoTipCount = 0;
-    _showVideo = NO;//YES;
+    _showVideo = YES;
     _questions = [InterstitialQuizDataSource dataSourceQuestions];
     _videoURLs = [InterstitialQuizDataSource dataSourceVideos];
   }
@@ -61,7 +61,7 @@
   } else {
     tipVC = [self _createQuestionTipVC];
   }
-//  _showVideo = !_showVideo;
+  _showVideo = !_showVideo;
   return tipVC;
 }
 
