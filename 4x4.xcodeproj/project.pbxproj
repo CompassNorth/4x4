@@ -95,10 +95,7 @@
 		5887BD4523763DCF0063E472 /* 4x4 */ = {
 			isa = PBXGroup;
 			children = (
-				5887BD4623763DCF0063E472 /* AppDelegate.h */,
-				5887BD4723763DCF0063E472 /* AppDelegate.m */,
-				5887BD4923763DCF0063E472 /* SceneDelegate.h */,
-				5887BD4A23763DCF0063E472 /* SceneDelegate.m */,
+				58F7E8F3239F7B3B0067C4E3 /* App Stuff */,
 				5887BD4C23763DCF0063E472 /* GameViewController.h */,
 				5887BD4D23763DCF0063E472 /* GameViewController.m */,
 				58F7E8DE239E64B00067C4E3 /* UIHelpers */,
@@ -171,6 +168,17 @@
 				58F7E8F1239F0A680067C4E3 /* InterstitialQuestion.m */,
 			);
 			path = InterstitialDataModels;
+			sourceTree = "<group>";
+		};
+		58F7E8F3239F7B3B0067C4E3 /* App Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				5887BD4A23763DCF0063E472 /* SceneDelegate.m */,
+				5887BD4923763DCF0063E472 /* SceneDelegate.h */,
+				5887BD4723763DCF0063E472 /* AppDelegate.m */,
+				5887BD4623763DCF0063E472 /* AppDelegate.h */,
+			);
+			path = "App Stuff";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

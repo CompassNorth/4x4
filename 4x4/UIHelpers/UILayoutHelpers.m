@@ -23,6 +23,19 @@
                           view.frame.size.height);
 }
 
++ (void)rightSideOffsetView:(UIView *)view
+                 withinView:(UIView *)outerView
+                   byOffset:(CGFloat)offset;
+{
+  CGFloat outerWidth = outerView.frame.size.width;
+  CGFloat innerWidth = view.frame.size.width;
+
+  view.frame = CGRectMake(outerWidth - innerWidth - offset,
+                          view.frame.origin.y,
+                          innerWidth,
+                          view.frame.size.height);
+}
+
 + (void)addStandardButtonInsets:(UIButton *)button
 {
   button.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);

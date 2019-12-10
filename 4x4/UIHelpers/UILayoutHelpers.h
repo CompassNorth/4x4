@@ -15,6 +15,10 @@
 + (void)horizontallyCenterView:(UIView *)view
                     withinView:(UIView *)outerView;
 
++ (void)rightSideOffsetView:(UIView *)view
+                 withinView:(UIView *)outerView
+                   byOffset:(CGFloat)offset;
+
 + (void)addStandardButtonInsets:(UIButton *)button;
 
 @end

@@ -39,6 +39,7 @@ static const NSString *kHighScoreKey = @"highScore";
   UILabel *_scoreLabel;
   UILabel *_highScoreLabel;
   UILabel *_noMoreMovesLabel;
+  UILabel *_coinLabel;
   double _score;
   double _highScore;
   double _moveCount;
@@ -80,6 +81,11 @@ static const NSString *kHighScoreKey = @"highScore";
   _noMoreMovesLabel.hidden = YES;
   [self.view addSubview:_noMoreMovesLabel];
 
+  _coinLabel = [UILabel new];
+  _coinLabel.textColor = [UIColor blackColor];
+  [self _updateCoinCount:0];
+  [self.view addSubview:_coinLabel];
+
   [self _updateScore:0];
   [self _updateHighScore:[[[NSUserDefaults standardUserDefaults] valueForKey:kHighScoreKey] doubleValue]];
   _moveCount = 0;
@@ -94,6 +100,11 @@ static const NSString *kHighScoreKey = @"highScore";
   const CGFloat width = [UIScreen mainScreen].bounds.size.width;
   const CGFloat height = [UIScreen mainScreen].bounds.size.height;
   const CGFloat bubbles_width = width - kSideBuffer * 2;
+
+  _coinLabel.frame = CGRectMake(0, 65, 0, 0);
+  [_coinLabel sizeToFit];
+  [UILayoutHelpers rightSideOffsetView:_coinLabel withinView:self.view byOffset:kSideBuffer];
+
   _bubbleViewController.view.frame = CGRectMake(kSideBuffer,
                                  height - kUnderBuffer - bubbles_width,
                                  bubbles_width,
@@ -211,16 +222,18 @@ static const NSString *kHighScoreKey = @"highScore";
 - (void)_showInterstitial
 {
   [_interstitialPresenter showInterstitialFromViewController:self];
+  // TODO: Get the coin count after showing an interstitial
 }
 
-- (void)_updateCoinCount:(double)coinsToAdd
+- (void)_updateCoinCount:(double)coinCount
 {
-  _coinCount += coinsToAdd;
+  _coinCount = coinCount;
+  _coinLabel.text = [NSString stringWithFormat:@"Coins: %0.0f", _coinCount];
   if (_coinCount > 0) {
-    // TODO : Update the score bubble to reflect the number of coins
-    // TODO : unlock hammer if the coin count is high enough (med coin)
-    // TODO : unlock reshuffle if the coin is high enough (high coin)
-    // TODO : unlock undo if the coin is high enough (low coin)
+    // TODO: Update the score bubble to reflect the number of coins
+    // TODO: unlock hammer if the coin count is high enough (med coin)
+    // TODO: unlock reshuffle if the coin is high enough (high coin)
+    // TODO: unlock undo if the coin is high enough (low coin)
   }
 }
 
