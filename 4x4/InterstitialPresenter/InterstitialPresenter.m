@@ -24,6 +24,7 @@
   int _currentVideoTipCount;
   bool _showVideo; 
   NSArray<InterstitialQuestion *> *_questions;
+  NSArray<NSURL *> *_videoURLs;
 }
 
 - (instancetype)init {
@@ -32,6 +33,7 @@
     _currentVideoTipCount = 0;
     _showVideo = YES;
     _questions = [InterstitialQuizDataSource dataSourceQuestions];
+    _videoURLs = [InterstitialQuizDataSource dataSourceVideos];
   }
   return self;
 }
@@ -65,9 +67,14 @@
 
 - (UIViewController *)_createVideoTipVC
 {
-  // TODO: Get a range of videos to upload here
+  if (_currentVideoTipCount >= _videoURLs.count) {
+    _currentVideoTipCount = 0;
+  }
+
   [self interstitialFinishedWithCoins:2];
-  return [AdVideoViewController new];
+  AdVideoViewController *vc = [AdVideoViewController new];
+  vc.videoUrl = _videoURLs[_currentVideoTipCount++];
+  return vc;
 }
 
 - (UIViewController *)_createQuestionTipVC

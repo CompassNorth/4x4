@@ -9,11 +9,13 @@
 #ifndef InterstitialQuizDataSource_h
 #define InterstitialQuizDataSource_h
 #import "InterstitialQuestion.h"
+#import <AVKit/AVKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface InterstitialQuizDataSource : NSObject
 
 +(NSArray<InterstitialQuestion *> *)dataSourceQuestions;
-
++(NSArray<NSURL *> *)dataSourceVideos;
 @end
 
 
