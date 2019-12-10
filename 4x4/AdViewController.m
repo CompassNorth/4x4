@@ -103,9 +103,9 @@ static CGFloat kSideBuffer = 25;
         [button setBackgroundColor:UIColor.redColor];
       }
     }
-    
-    [self dismissViewControllerAnimated:YES completion:Nil];
-    // Add coins and show coin image
+
+    [self performSelector:@selector(_dismissSelf) withObject:self afterDelay:0.5];
+
   } else {
     [selectedButton setBackgroundColor:UIColor.redColor];
     selectedButton.enabled = NO;
@@ -113,6 +113,12 @@ static CGFloat kSideBuffer = 25;
   }
   
   [self.view setNeedsLayout];
+}
+
+- (void)_dismissSelf
+{
+  [self dismissViewControllerAnimated:YES completion:Nil];
+  // Add coins and show coin image
 }
 
 
