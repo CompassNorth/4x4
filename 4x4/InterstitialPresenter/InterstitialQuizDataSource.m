@@ -13,17 +13,24 @@
 
 +(NSArray<InterstitialQuestion *> *)dataSourceQuestions
 {
-  NSArray<NSString *> *answers = @[@"A funny joke", @"Where you are", @"Your phone number"];
+  NSArray<NSString *> *answers = @[@"🤣 A funny joke 🤣", @"📍 Where you are 📍", @"📱 Your phone number 📱"];
   InterstitialQuestion *tellStranger = [[InterstitialQuestion alloc] initWithQuestion:@"Which of these is okay to tell someone you met online" answers:answers correctAnswerIndex:0];
 
   answers = @[@"👯 Tell a friend 👯", @"👪 Tell an adult 👪", @"💨 Nothing 💨"];
   InterstitialQuestion *uncomfy = [[InterstitialQuestion alloc] initWithQuestion:@"What should you do if someone on the internet makes you feel sad, scared, or confused?" answers:answers correctAnswerIndex:1];
 
-  answers = @[@"yes", @"no"];
+  answers = @[@"✅ yes ✅", @"❌ no ❌"];
   InterstitialQuestion *moreInfo = [[InterstitialQuestion alloc] initWithQuestion:@"I'm online and I meet someone my age in a chat room. Is it OK to give him or her my address or phone number so we can get together?" answers:answers correctAnswerIndex:1];
   moreInfo.additionalInformation = @"You should NEVER give out your name or address to anyone you meet online. If you really want to have an offline conversation with this person, check with your parents to see if they can think of a safe way to arrange it.";
 
-  return @[uncomfy, moreInfo, tellStranger];
+  answers = @[@"✅ yes ✅", @"❌ no ❌"];
+  InterstitialQuestion *picture = [[InterstitialQuestion alloc] initWithQuestion:@"I have a digital picture of myself and someone I met online wants to see it.  Is it OK to send it to that person?" answers:answers correctAnswerIndex:1];
+  picture.additionalInformation = @"You should NEVER send a picture of yourself to someone you met online, without first checking with your parents!";
+
+  answers = @[@"😤 Say something mean back? 😤", @"🙇 Ask them to apologize? 🙇", @"😶 Don't respond; Tell an adult if it bothers me? 😶"];
+  InterstitialQuestion *bothered = [[InterstitialQuestion alloc] initWithQuestion:@"I'm in the middle of a chat session and someone says something really mean.  Should I:" answers:answers correctAnswerIndex:2];
+
+  return @[uncomfy, moreInfo, tellStranger, picture, bothered];
 }
 
 +(NSArray<NSURL *> *)dataSourceVideos
