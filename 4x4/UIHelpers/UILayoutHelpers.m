@@ -23,4 +23,9 @@
                           view.frame.size.height);
 }
 
++ (void)addStandardButtonInsets:(UIButton *)button
+{
+  button.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+}
+
 @end

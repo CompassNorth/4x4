@@ -51,6 +51,7 @@ static CGFloat kSideBuffer = 25;
     [answerButton setTitle:[self.answers objectAtIndex:i] forState:UIControlStateNormal];
     [answerButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [answerButton addTarget:self action:@selector(_didTapAnswer:) forControlEvents:UIControlEventTouchUpInside];
+    [UILayoutHelpers addStandardButtonInsets:answerButton];
     [self.view addSubview:answerButton];
     [answerButtons addObject:answerButton];
     
