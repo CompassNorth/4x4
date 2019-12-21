@@ -238,7 +238,8 @@ InterstitialPresenterDelegate
 
 - (void)_showInterstitial
 {
-  [_interstitialPresenter showInterstitialFromViewController:self];
+  //Don't show ad's for mom's xmas gift
+ // [_interstitialPresenter showInterstitialFromViewController:self];
   // TODO: Get the coin count after showing an interstitial
 }
 
