@@ -88,6 +88,7 @@ InterstitialPresenterDelegate
 
   _coinLabel = [UILabel new];
   _coinLabel.textColor = [UIColor blackColor];
+  _coinLabel.hidden = YES;
   [self _updateCoinCount:0];
   [self.view addSubview:_coinLabel];
 
@@ -238,7 +239,7 @@ InterstitialPresenterDelegate
 
 - (void)_showInterstitial
 {
-  [_interstitialPresenter showInterstitialFromViewController:self];
+  //[_interstitialPresenter showInterstitialFromViewController:self];
   // TODO: Get the coin count after showing an interstitial
 }
 
