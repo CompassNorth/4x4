@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) NSNumber *bubbleValue;
 @property (nonatomic, assign) Boolean isPressed;
+@property (nonatomic, assign) Boolean isDead;
 
 - (void)randomize;
 

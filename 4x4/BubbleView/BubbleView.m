@@ -82,6 +82,7 @@ static CGFloat kBubbleSideBuffer = 10;
 - (void)removeBubble:(IndBubble *)bubble
 {
   [bubble removeFromSuperview];
+  bubble.isDead = YES;
   [self setNeedsLayout];
 }
 
@@ -101,7 +102,7 @@ static CGFloat kBubbleSideBuffer = 10;
   for (NSMutableArray<IndBubble *> *column in _bubbles) {
     int moveSpace = 0;
     for (int i = column.count - 1; i > -1; i--) {
-      if (!column[i].superview) {
+      if (column[i].isDead) {
         moveSpace++;
       } else {
         column[i + moveSpace] = column[i];
@@ -109,6 +110,7 @@ static CGFloat kBubbleSideBuffer = 10;
           //Can't make the bubble nil
           //Doing this instead
           column[i] = [IndBubble new];
+          column[i].isDead = YES;
         }
       }
     }
@@ -119,7 +121,7 @@ static CGFloat kBubbleSideBuffer = 10;
 - (void)refillBubbles{
   for (NSMutableArray<IndBubble *>* column in _bubbles) {
     for (int i = column.count - 1; i > -1; i--) {
-      if (!column[i].superview){
+      if (column[i].isDead){
         column[i] = [IndBubble new];
         [self addSubview:column[i]];
       }
