@@ -88,6 +88,7 @@ InterstitialPresenterDelegate
 
   _coinLabel = [UILabel new];
   _coinLabel.textColor = [UIColor blackColor];
+  _coinLabel.hidden = YES;
   [self _updateCoinCount:0];
   [self.view addSubview:_coinLabel];
 
