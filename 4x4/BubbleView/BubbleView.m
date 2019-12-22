@@ -106,8 +106,9 @@ static CGFloat kBubbleSideBuffer = 10;
       } else {
         column[i + moveSpace] = column[i];
         if (moveSpace > 0) {
+          //Can't make the bubble nil
+          //Doing this instead
           column[i] = [IndBubble new];
-          [self addSubview:column[i]];
         }
       }
     }
